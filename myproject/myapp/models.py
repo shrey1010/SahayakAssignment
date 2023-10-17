@@ -8,3 +8,9 @@ class Teacher(models.Model):
 class Student(models.Model):
     name = models.CharField(max_length=100)
     teachers = models.ManyToManyField(Teacher)
+
+
+class Certificate(models.Model):
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    certificate_text = models.TextField()
